@@ -129,3 +129,24 @@ new Sortable(dragArea, {
 Animation : 350
 });
 
+/*change theme .. 'RAJAB'*/
+
+let element = document.querySelector('.fas');
+element.addEventListener('click', change);
+if (JSON.parse(localStorage.getItem('theme')) == "light-theme") {
+    document.body.classList.toggle('light-theme');
+    element.classList.toggle('fa-moon');
+    element.classList.toggle('fa-sun');
+}
+function change() {
+    document.body.classList.toggle('light-theme');
+    element.classList.toggle('fa-sun');
+    element.classList.toggle('fa-moon');
+    if (document.body.classList.contains('light-theme')) {
+        localStorage.setItem('theme', JSON.stringify('light-theme'));
+    }
+    else {
+        localStorage.removeItem('theme');
+    }
+}
+
