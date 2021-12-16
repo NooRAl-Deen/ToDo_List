@@ -70,8 +70,10 @@ function addElementsToPage(tasksArray) {
     task.appendChild(taskContent);
     tasks.appendChild(task);
     checkBoxDiv.onclick = clickToComplete;
+
   });
 }
+
 
 // Add Tasks To tasksArray
 function addTasksToArray(taskText) {
@@ -106,8 +108,24 @@ function changeIsCompleted(taskid) {
 
 /* [NooR Al Deen] -> End */
 
+/* CLEAR COMPLETED  .. 'LEEN ' */
+
+const clearCompleted = document.querySelectorAll (".btn-clear-all");
+for (let i= 0 ; i < clearCompleted.length ; i++ ) {
+  clearCompleted[i].addEventListener("click", clean )
+}
+function clean () {
+  tasksArray = tasksArray.filter((task) => task.isCompleted !=true)
+  localStorage.setItem("tasks", JSON.stringify(tasksArray));
+  const completeTask = document.querySelectorAll(".completed")
+  for (let i=0; i<completeTask.length ; i++){
+    completeTask[i].remove();
+  }
+}
+
 /* DRAG AND DROP .. 'LEEN'  */
 const dragArea = document.querySelector(".tasks");
 new Sortable(dragArea, {
 Animation : 350
 });
+
