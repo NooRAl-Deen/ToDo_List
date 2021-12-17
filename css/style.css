@@ -159,13 +159,6 @@ main {
 .circle i {
     display: none;
 }
-.circle:hover {
-    border: 1px solid var(--lin-gr);
-    background: var(--lin-gr);
-}
-.circle:hover i {
-    display: block;
-}
 .input .input-field {
     flex-grow: 1;
     width: 100%;
