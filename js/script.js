@@ -69,8 +69,9 @@ function addElementsToPage(tasksArray) {
     taskContent.appendChild(iElementCon);
     task.appendChild(taskContent);
     tasks.appendChild(task);
-    checkBoxDiv.onclick = clickToComplete;
+      checkBoxDiv.onclick = clickToComplete;
 
+      counterActive();
   });
 }
 
@@ -92,7 +93,9 @@ function addTasksToArray(taskText) {
 function clickToComplete(e) {
   e.currentTarget.parentElement.classList.toggle("completed");
   e.currentTarget.parentElement.classList.toggle("active-task");
-  changeIsCompleted(e.currentTarget.parentElement.getAttribute("data-id"));
+    changeIsCompleted(e.currentTarget.parentElement.getAttribute("data-id"));
+   
+    counterActive();
 }
 
 function changeIsCompleted(taskid) {
@@ -149,4 +152,20 @@ function change() {
         localStorage.removeItem('theme');
     }
 }
+/*Counts Active Tasks .. 'RAJAB'*/
 
+function counterActive() {
+   
+    let counter = document.querySelectorAll('.counter');
+    let CounterTasks = 0;
+
+    for (let i = 0; i < tasksArray.length; i++) {
+        if (!tasksArray[i].isCompleted) {
+            CounterTasks += 1;
+        }
+    }
+    for (let z = 0; z < counter.length; z++) {
+        counter[z].innerHTML = CounterTasks;
+    }
+
+}
