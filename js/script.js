@@ -136,17 +136,16 @@ new Sortable(dragArea, {
 
 /* show active ==> YAZAN*/
 
-let activ_s = document.querySelector('.showActive');
-activ_s.addEventListener('click', active_function);
-let actx = document.querySelectorAll('.completed');
+let activ_s=document.querySelector('.showActive');
+activ_s.addEventListener('click',active_function);
 
-function active_function() {
-    for (let i = 0; i < actx.length; i++) {
-        actx[i].style.display = "none"
-
-    }
+function active_function(){   
+  document.querySelectorAll('.task').forEach(function(e){
+    if (e.classList.contains("completed")) {
+        e.style.display = "none";
+    } 
+});
 }
-
 /* DONE show ALL ==>yazan*/
 /*change theme .. 'RAJAB'*/
 
