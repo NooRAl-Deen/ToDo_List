@@ -132,6 +132,21 @@ new Sortable(dragArea, {
 Animation : 350
 });
 
+/* show active ==> YAZAN*/
+
+let activ_s=document.querySelector('.showActive');
+activ_s.addEventListener('click',active_function);
+let actx=document.querySelectorAll('.completed');
+
+function active_function(){   
+  for(let i=0;i<actx.length;i++)
+  {      
+        actx[i].style.display = "none"
+
+    }
+  }
+
+/* DONE show ALL ==>yazan*/
 /*change theme .. 'RAJAB'*/
 
 let element = document.querySelector('.fas');
@@ -152,6 +167,8 @@ function change() {
         localStorage.removeItem('theme');
     }
 }
+
+
 /*Counts Active Tasks .. 'RAJAB'*/
 
 function counterActive() {
