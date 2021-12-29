@@ -4,8 +4,7 @@
 // To Prevent Initialize Empty Array If There Tasks At LocalStorge
 // To Save Tasks
 let tasksArray = JSON.parse(localStorage.getItem("tasks")) ?
-    JSON.parse(localStorage.getItem("tasks")) :
-    [];
+    JSON.parse(localStorage.getItem("tasks")) : [];
 
 // Get The Input Field
 let inputText = document.querySelector(".addNewTask");
@@ -28,6 +27,7 @@ inputText.addEventListener("keypress", (e) => {
 // Recall The Function To Show Elements In The Page After Reloading
 if (tasksArray.length > 0) {
     addElementsToPage(tasksArray);
+    document.querySelector('.showAll').classList.add('active-btn');
 }
 
 function addElementsToPage(tasksArray) {
@@ -136,19 +136,22 @@ new Sortable(dragArea, {
 
 /* show active ==> YAZAN*/
 
-let activ_s=document.querySelector('.showActive');
-activ_s.addEventListener('click',active_function);
+let activ_s = document.querySelector('.showActive');
+activ_s.addEventListener('click', active_function);
 
-function active_function(){   
-  document.querySelectorAll('.task').forEach(function(e){
-    if (e.classList.contains("completed")) {
-        e.style.display = "none";
-    } 
-    else{
-        e.style.display = "flex";
+function active_function(event) {
+    document.querySelectorAll('.task').forEach(function(e) {
+        if (e.classList.contains("completed")) {
+            e.style.display = "none";
+        } else {
+            e.style.display = "flex";
 
-    }
-});
+        }
+    });
+
+    document.querySelector('.showAll').classList.remove('active-btn');
+    document.querySelector('.showCompleted').classList.remove('active-btn');
+    event.target.classList.add('active-btn');
 }
 /* DONE show ALL ==>yazan*/
 /*change theme .. 'RAJAB'*/
@@ -210,7 +213,7 @@ function deleteTask(e) {
 let sh = document.querySelector(".showCompleted");
 sh.addEventListener("click", showCompletedTasks);
 
-function showCompletedTasks(ammar) {
+function showCompletedTasks(event) {
     const tasks = document.querySelectorAll('.task');
     tasks.forEach(function(todo) {
         if (todo.classList.contains("completed")) {
@@ -220,16 +223,21 @@ function showCompletedTasks(ammar) {
         }
     });
 
-    ammar.target.classList.add('active-btn')
+    document.querySelector('.showActive').classList.remove('active-btn');
+    document.querySelector('.showAll').classList.remove('active-btn');
+    event.target.classList.add('active-btn');
 }
 let show = document.querySelector(".showAll");
 show.addEventListener("click", showAllTasks);
 
-function showAllTasks(law) {
+function showAllTasks(event) {
     const tasks = document.querySelectorAll('.task');
     tasks.forEach(function(todo) {
         todo.style.display = "flex";
     });
-    law.target.classList.add('active-btn')
+
+    document.querySelector('.showActive').classList.remove('active-btn');
+    document.querySelector('.showCompleted').classList.remove('active-btn');
+    event.target.classList.add('active-btn');
 
 }
