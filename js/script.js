@@ -241,6 +241,6 @@ function showAllTasks(event) {
 
     document.querySelector('.showActive').classList.remove('active-btn');
     document.querySelector('.showCompleted').classList.remove('active-btn');
-    event.target.classList.add('active-btn');
+    // event.target.classList.add('active-btn');
 
 }
