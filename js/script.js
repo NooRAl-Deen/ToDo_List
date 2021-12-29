@@ -206,6 +206,8 @@ function deleteTask(e) {
     e.currentTarget.parentElement.parentElement.remove();
 
     tasksArray = todos;
+
+    counterActive();
 }
 
 
