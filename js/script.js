@@ -144,6 +144,10 @@ function active_function(){
     if (e.classList.contains("completed")) {
         e.style.display = "none";
     } 
+    else{
+        e.style.display = "flex";
+
+    }
 });
 }
 /* DONE show ALL ==>yazan*/
