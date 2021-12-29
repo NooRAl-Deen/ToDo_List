@@ -72,8 +72,9 @@ function addElementsToPage(tasksArray) {
         tasks.appendChild(task);
         checkBoxDiv.onclick = clickToComplete;
 
-        counterActive();
     });
+    counterActive();
+
 }
 
 
